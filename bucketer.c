@@ -8,17 +8,17 @@ struct CountsBySoH {
 };
 
 struct CountsBySoH countBatteriesByHealth(const int* presentCapacities, int nBatteries) {
-  float SOH=100*(*presentCapacities)/120;
+  float SOH=100*(*presentCapacities)/120; //Converting presentCapacities to SOH,120Ah is the rated capacity which is assumed
   struct CountsBySoH counts = {0, 0, 0};
  
   for(int i=0;i< nBatteries;i++)
     {
      if(SOH >80 && SOH<=100)
-       counts.healthy++;
+       counts.healthy++; //healthy battery count
       else if (SOH > 62 && SOH <80)
-        counts.exchange++;
+        counts.exchange++;//exchange battery count
       else 
-        counts.failed++;
+        counts.failed++;//failed battery count
     }
   
   return counts;
